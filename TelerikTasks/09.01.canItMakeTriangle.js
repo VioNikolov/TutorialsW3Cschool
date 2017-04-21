@@ -34,13 +34,6 @@ console.log(isTriangle(firstLine, secondLine, thirdLine));
 
 
 
-
-
-
-
-
-
-
 solve(
 [
   '7', '7', '2', '2',
