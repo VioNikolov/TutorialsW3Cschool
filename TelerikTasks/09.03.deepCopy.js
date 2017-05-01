@@ -19,3 +19,19 @@ console.log(clone({
     name: 'Bisu',
     profession: 'progamer'
 }));
+
+//по-добре:
+
+function deepCopy(obj){
+    if(typeof obj === 'object'){
+        let newObj = Array.isArray(obj) ? [] : {};//дали е масив или обект, за да знаем в какво да го запазим
+
+        for(let i in obj){
+            newObj[i] = deepCopy(obj[i]);
+        }
+        return newObj;
+    }
+    else {
+        return obj;
+    }
+}
