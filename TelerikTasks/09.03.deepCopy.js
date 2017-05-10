@@ -23,9 +23,9 @@ console.log(clone({
 //по-добре:
 
 function deepCopy(obj){
-    if(typeof obj === 'object'){
+    if(typeof obj === 'object'){//ако е функция ще отиде най-долу и ще я върне по референция
         let newObj = Array.isArray(obj) ? [] : {};//дали е масив или обект, за да знаем в какво да го запазим
-
+                                                 
         for(let i in obj){
             newObj[i] = deepCopy(obj[i]);
         }
