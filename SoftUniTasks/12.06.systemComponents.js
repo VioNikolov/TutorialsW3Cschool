@@ -1,4 +1,4 @@
-function solve(input) {
+function solve(input) { 
 
 let result = {};
 
@@ -68,6 +68,83 @@ Object.keys(result).map(function(element){
         }
        
     }
+}
+
+solve([
+'SULS | Main Site | Home Page',
+'SULS | Main Site | Login Page',
+'SULS | Main Site | Register Page',
+'SULS | Judge Site | Login Page',
+'SULS | Judge Site | Submittion Page',
+'Lambda | CoreA | A23',
+'SULS | Digital Site | Login Page',
+'Lambda | CoreB | B23',
+'Lambda | CoreB | B24',
+'Lambda | CoreA | A25',
+'Lambda | CoreC | C4',
+'Indice | Session | Default Storage',
+'Indice | Session | Default Security'
+
+]
+
+);
+
+
+//With new Map
+function solve(input) {
+    let systems = new Map();
+
+    for (var i = 0; i < input.length; i++) {
+        let splitted = input[i].split(' | ');
+        let system = splitted[0];
+        let compName = splitted[1];
+        let subCompName = splitted[2];
+
+        if (! systems.get(system)) {
+            systems.set(system, new Map);
+        }
+
+        if (! systems.get(system).get(compName)) {
+            systems.get(system).set(compName, []);
+        }
+        systems.get(system).get(compName).push(subCompName);
+    }
+
+    let systemsSorted = Array.from(systems.keys()).sort((x, y) => sortSystems(x, y));
+
+    for (let el of systemsSorted) {
+        console.log(el);
+        let compSorted = Array.from(systems.get(el).keys()).sort((x, y) => sortComp(x, y, el));
+        
+        for (let el2 of compSorted) {
+            if (el2 != undefined) {
+                console.log(`|||${el2}`);
+            }
+            
+           
+           for (let el3 of systems.get(el).get(el2)) {
+                if (el3 != undefined) {
+                    console.log(`||||||${el3}`);
+                }            
+           }
+        }
+    }
+
+
+    function sortSystems (x, y) {
+        if (systems.get(y).size != systems.get(x).size) {
+            return systems.get(y).size - systems.get(x).size;
+        }
+        else {
+            return x.localeCompare(y);
+        }
+    }
+
+    function sortComp (x, y, el) {
+        if (systems.get(el).get(y).size != systems.get(el).get(x).size) {
+            return systems.get(el).get(y).size - systems.get(el).get(x).size;
+        }
+    }  
 }
 
 solve([
