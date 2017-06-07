@@ -4,7 +4,7 @@ let result = '';
 		
 		for (let y = 0; y < input.length; y++) {
 
-			let regex = /(<([^>]+)>)/ig;
+			let regex = /<[^>]+>/ig;
 
 			if (input[y] != undefined) {
 				result = result + input[y].replace(regex, '').trim();
