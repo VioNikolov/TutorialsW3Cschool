@@ -1,20 +1,23 @@
 let shapeModule = (function shapeModule(){
-debugger
+
     function Shape (color) {
         this._color = color;
     }
 
     Shape.prototype.toString = function() {
-        return this._color;
+        return "Color: " + this._color;
     }
 
-    let Circle = function (centerX, centerY, radius, color) {
+    let Circle = (function() {
+        function Circle (centerX, centerY, radius, color) {
             this._centerX = centerX;
             this._centerY = centerX;
             this._radius = radius;
             Shape.call(this, color);
-        };
-  
+        }
+
+        return Circle;
+    })();   
 
     Circle.prototype = Object.create(Shape.prototype);
     Circle.prototype.constructor = Circle;
