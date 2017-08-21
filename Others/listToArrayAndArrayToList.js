@@ -39,7 +39,6 @@ function nth (list, number) {
 }
 
 function nthRec (list, n) {
-    debugger
      if (!list) {
         return undefined;
     }
