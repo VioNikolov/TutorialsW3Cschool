@@ -1,3 +1,4 @@
+//Standart
 function reverseArray (arr) {
   let newArr = [];
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -6,8 +7,10 @@ function reverseArray (arr) {
   return newArr;
 }
 
+
+//In place
 function reverseArrayInPlace (arr) {
-  
+
   if (arr.length % 2 === 0) {
     for (let i = 0; i <= (arr.length/2) - 1; i++) {
       let temp = arr[arr.length - 1 - i];
