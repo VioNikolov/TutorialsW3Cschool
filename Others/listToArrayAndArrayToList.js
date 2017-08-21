@@ -34,10 +34,28 @@ function nth (list, number) {
         return myList[number];
     }
     else {
-        return 'undefined';
+        return undefined;
     }
 }
+
+function nthRec (list, n) {
+    debugger
+     if (!list) {
+        return undefined;
+    }
+    else if (n == 0) {
+        return list.value;
+    }
+    else {
+        return nth(list.rest, n - 1);
+    }
+}
+
+
+
 //console.log(arrayToList([1, 2, 3, 4]));
 //console.log(listToArray(arrayToList([1, 2, 3, 4])));
 // console.log(prepend(10, prepend(20, prepend(30, null))));
-console.log(nth(arrayToList([10, 20, 30]), 3));
+//console.log(nth(arrayToList([10, 20, 30]), 2));
+console.log(nthRec(arrayToList([10, 20, 30]), 1));
+
