@@ -28,7 +28,7 @@ function prepend (value, list) {
 }
 
 function nth (list, number) {
-    var myList = listToArray(list);
+    var myList = listToArray(list); 
     var listLength = myList.length;
     if (listLength > number) {
         return myList[number];
