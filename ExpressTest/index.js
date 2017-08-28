@@ -1,9 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var mongoose = require('mongoose');
 var upload = multer();
 var app = express();
+var dynamoApi = require('./testSubject');
 
 app.get('/', function(req, res){
    res.render('form');
@@ -13,21 +13,46 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 // for parsing application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 // for parsing application/xwww-
 app.use(bodyParser.urlencoded({ extended: true })); 
+app.post(dynamoApi, function (req, res) {
+    res.bodyParser.json();
+})
 
 
 // for parsing multipart/form-data
-app.use(upload.array());
+app.use(upload.array()); 
 app.use(express.static('public'));
 
-app.post('/', function(req, res){
-   console.log(req.body);
-   res.send("recieved your request!");
-});
-app.listen(3000);
+app.post('/login', function (req, res) {
+    getSidt();
+    res.end('success!!!');
+})
+
+function getSidt () {
+    var request = require("request");
+
+    var options = { method: 'POST',
+    url: 'https://dynamoweb1.netagesolutions.com:7010/new/v1/Login',
+    headers: 
+    { 
+        'cache-control': 'no-cache',
+        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
+    formData: 
+    { userName: 'dynamoadmin@Interns.com',
+        password: 'Interns.2017',
+        tenant: 'Interns' } };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    console.log(body);
+    });
+
+}
+app.listen(9000);
 
 
 
