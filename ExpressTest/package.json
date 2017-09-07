@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+<<<<<<< HEAD
     "mssql": "^4.0.4"
   },
   "devDependencies": {
@@ -17,4 +18,11 @@
   },
   "author": "vio",
   "license": "ISC"
+=======
+    "mongoose": "^4.11.8",
+    "multer": "^1.3.0",
+    "pug": "^2.0.0-rc.3",
+    "request": "^2.81.0"
+  }
+>>>>>>> 2544b260ef1f4c702f92a720726d182f9deee146
 }
