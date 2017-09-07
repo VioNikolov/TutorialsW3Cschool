@@ -2,17 +2,19 @@
   "name": "expresstest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "vio",
-  "license": "ISC",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "mongoose": "^4.11.8",
-    "multer": "^1.3.0",
-    "pug": "^2.0.0-rc.3"
-  }
+    "mssql": "^4.0.4"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "vio",
+  "license": "ISC"
 }
